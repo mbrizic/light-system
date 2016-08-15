@@ -1,4 +1,4 @@
-var lightSystem = angular.module('lightSystem', ['ngRoute', 'ngAnimate', 'toaster'])
+var lightSystem = angular.module('lightSystem', ['ngRoute', 'ngAnimate', 'ngFileUpload', 'toaster'])
 .config(appConfig);
 
 appConfig.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
@@ -16,7 +16,7 @@ function appConfig($routeProvider, $locationProvider, $httpProvider){
 			templateUrl: 'views/allLights.html',
 			controller: 'allLightsController'
 		})
-		.when('/editor/:id', {
+		.when('/editor/:id?', {
 			templateUrl: 'views/editor.html',
 			controller: 'editorController'
 		})

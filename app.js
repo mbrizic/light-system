@@ -6,9 +6,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var colors = require('colors');
+var multer = require('multer');
 var config = require('./backend/config');
 
 var app = express();
+
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
+    res.header("Access-Control-Allow-Origin", "http://localhost");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.use(express.static('../client'));
 
 app.set('views', path.join(__dirname, 'frontend/views'));
 app.set('view engine', 'ejs');
@@ -32,11 +42,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes
 var lightsApi = require('./backend/routes/lightsApi');
 var floorplansApi = require('./backend/routes/floorplansApi');
+var fileUploadApi = require('./backend/routes/fileUploadApi');
+
 var routes = require('./backend/routes/routes');
 
 //TODO: better namespace those routes
 app.use('/api/lights', lightsApi);
 app.use('/api/floorplans', floorplansApi);
+app.use('/api/fileUpload', fileUploadApi);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
