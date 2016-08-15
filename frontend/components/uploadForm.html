@@ -1,0 +1,18 @@
+<form name="uploadForm">
+    Single Image with validations
+    <input 
+       type="file" 
+       ngf-select 
+       ng-model="file" 
+       name="file" 
+       ngf-pattern="'image/*'"
+       accept="image/*" 
+       ngf-max-size="20MB" 
+       />
+    Image thumbnail: <img style="width:100px;" ngf-thumbnail="file || '/thumb.jpg'"/>
+    <i ng-show="uploadForm.file.$error.required">*required</i><br>
+    <i ng-show="uploadForm.file.$error.maxSize">File too large 
+    {{file.size / 1000000|number:1}}MB: max 20M</i>
+    <button type="submit" ng-click="_onSubmit(file)">submit</button>
+    <p>{{progress}}
+</form>
