@@ -1,0 +1,31 @@
+{
+  "name": "lightSystem",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "watch": "supervisor ./bin/www",
+    "postinstall": "bower install; node backend/database/database.js",
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "bower": "^1.7.1",
+    "colors": "^1.1.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "^2.3.4",
+    "express": "~4.13.1",
+    "express-session": "^1.12.1",
+    "jade": "~1.11.0",
+    "mocha": "^2.4.5",
+    "moment": "^2.10.6",
+    "morgan": "~1.6.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "pg": "^4.4.3",
+    "request": "^2.69.0",
+    "sequelize": "^3.15.0",
+    "serve-favicon": "~2.3.0"
+  }
+}

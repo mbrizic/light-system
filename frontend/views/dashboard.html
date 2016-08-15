@@ -1,0 +1,24 @@
+<h1>dashboard</h1>
+
+<div class="row">
+	<div class="col-xs-2"> 
+		<div ng-repeat="floorplan in floorplans">
+			<a href ng-click="selectFloorplan(floorplan)">
+				- {{ floorplan.name }} >
+			</a>
+		</div>
+	</div>
+
+	<div class="col-xs-8">
+		{{ selectedFloorplan }}
+	</div>
+
+
+	<div class="col-xs-2">
+		<div ng-repeat="floorplan in floorplans">
+			<a href ng-click="selectFloorplan(floorplan)">
+				- {{ floorplan.name }} >
+			</a>
+		</div>
+	</div>	
+</div>

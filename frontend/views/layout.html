@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="lightSystem">
+<head>
+	<meta charset="UTF-8">
+	<title>Home Light System</title>
+	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="/lib/angularjs-toaster/toaster.css">
+	<base href="/">
+</head>
+<body ng-controller="layoutController">
+
+	<toaster-container toaster-options="toasterOptions"></toaster-container>
+	<app-header logged-in-user="loggedInUser"></app-header>
+
+	<div class="container col-xs-24" ng-view></div>
+
+	<script src="lib/jquery/dist/jquery.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-route/angular-route.js"></script>
+	<script src="lib/angular-animate/angular-animate.js"></script>
+	<script src="lib/angularjs-toaster/toaster.js"></script>
+	<script src="src/angularapp.js"></script>
+	<script src="src/interceptor.js"></script>
+	<script src="src/utility.js"></script>
+	<script src="src/controllers/layoutController.js"></script>
+	<script src="src/controllers/dashboardController.js"></script>
+	<script src="src/controllers/editorController.js"></script>
+	<script src="src/controllers/allScenesController.js"></script>
+	<script src="src/controllers/allLightsController.js"></script>
+	<script src="services/sharedDataService.js"></script>
+	<script src="components/textBox.js"></script>
+	<script src="components/textArea.js"></script>
+	<script src="components/checkBox.js"></script>
+	<script src="components/autoComplete.js"></script>
+	<script src="components/appHeader.js"></script>
+</body>
+</html>

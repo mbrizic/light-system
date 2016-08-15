@@ -1,0 +1,12 @@
+<div class="form-group">
+	<label for="comment"> {{ label }} :</label>
+
+	<div class="input-group col-xs-12">
+		<input type="text" class="form-control {{ inputClass }}" ng-model="model"></input>
+		<span ng-if="buttonAction" class="input-group-btn">
+			<button ng-click="buttonAction()" class="btn btn-lg btn-primary" type="button"> {{ buttonText }} </button>
+		</span>
+	</div>
+
+	<span ng-if="helpText" class="help-block"> {{ helpText }} </span>
+</div>

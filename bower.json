@@ -1,0 +1,25 @@
+{
+  "name": "lightSystem",
+  "version": "0.0.0",
+  "authors": [
+    "Mario <brizic.mario@gmail.com>"
+  ],
+  "directory": "./frontend/bower_components/",
+  "main": "./frontend/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "angular-animate": "~1.4.8",
+    "AngularJS-Toaster": "angularjs-toaster#~0.4.181"
+  }
+}
