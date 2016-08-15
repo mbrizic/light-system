@@ -9,7 +9,8 @@ router.post('/', (req, res) => {
              res.json({ error_code: 1, err_desc: err });
              return;
         }
-         res.json({ error_code: 0, err_desc: null });
+
+        res.json({ filename: req.file.filename });
     });
 });
 

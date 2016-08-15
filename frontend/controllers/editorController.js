@@ -1,29 +1,42 @@
-editorController.$inject = ['$scope', '$http', '$routeParams', 'Upload', '$window'];
-function editorController($scope, $http, $routeParams, Upload, $window) {
+editorController.$inject = ['$scope', '$http', '$routeParams', '$location', 'Upload'];
+function editorController($scope, $http, $routeParams, $location, Upload) {
+    $scope.floorplan = {};
 	$scope.floorplanId = $routeParams.id;
 	$scope.isEditMode = $scope.floorplanId == undefined;
     $scope.isUploadPhase = true;
+    $scope.isLightPositionPhase = false;
 
-    $scope.uploadImage = function (file) {
+    $scope.uploadImage = uploadImage;
+    $scope.updateFloorplan = updateFloorplan;
+
+    function uploadImage (file) {
         Upload.upload({
             url: 'api/fileupload', 
             data: { file: file }
-        }).then(function (resp) {
-            if(resp.error_code === 0){
-                $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
-            } else {
-                $window.alert('an error occured');
-            }
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-            $window.alert('Error status: ' + resp.status);
-        }, function (evt) { 
-            console.log(evt);
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        }).then(function (response) {
+            $scope.isUploadPhase = false;
+
+            $scope.floorplan.imageUrl = response.filename;
+
+        }, function (error) {
+
+        }, function (event) { 
+            var progressPercentage = parseInt(100.0 * event.loaded / event.total);
             $scope.progress = 'progress: ' + progressPercentage + '% ';
         });
     };
+
+    function createNewFloorplan(filename) {
+        $http.post('/api/floorplans/', $scope.floorplan).then(function (response) {
+            $scope.floorplan = response;
+        });
+    }
+
+    function updateFloorplan(){
+        $http.put('/api/floorplans', $scope.floorplan).then(function (response) {
+            $scope.isLightPositionPhase = true;
+        });
+    }
 }
 
 lightSystem.controller('editorController', editorController);

@@ -10,6 +10,7 @@ module.exports = function(db, Sequelize) {
 			type: Sequelize.STRING,
 			required: true,
 			unique: true,
+			validate: { notEmpty: true },
 		},
 		description: {
 			type: Sequelize.STRING,

@@ -18,14 +18,14 @@ function getAll() {
 	});
 }
 
-function create (lightDto) {
-	return floorplan.create(lightDto);
+function create (floorplanDto) {
+	return floorplan.create(floorplanDto);
 }
 
-function update (lightDto) {
-	return floorplan.update(lightDto, {
+function update (floorplanDto) {
+	return floorplan.update(floorplanDto, {
 		where: {
-			id: lightDto.id
+			id: floorplanDto.id
 		}
 	});
 }

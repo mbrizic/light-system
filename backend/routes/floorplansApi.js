@@ -3,7 +3,7 @@ var router = express.Router();
 var floorplansRepo = require('../repositories/floorplansRepo');
 
 router.get('/', function(req, res, next) {
-	floorplansRepo.getAll().then(function(response) {
+	floorplansRepo.getAll().then(response => {
 		res.send(response);
 	});
 });
@@ -11,9 +11,24 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
 	var id = req.params.id;
 
-	floorplansRepo.getById(id).then(function(response) {
+	floorplansRepo.getById(id).then(response => {
 		res.send(response);
 	});
 });
 
+router.post('/', (req, res, next) => {
+	var dto = req.body;
+
+	floorplansRepo.create(dto).then(response => {
+		res.send(response);
+	});
+});
+
+router.put('/', (req, res, next) => {
+	var dto = req.body;
+
+	floorplansRepo.update(dto).then(response => {
+		res.send(response);
+	});
+});
 module.exports = router;

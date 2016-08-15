@@ -1,4 +1,17 @@
 <h1>editor</h1>
 
-<upload-form ng-if="isUploadPhase" on-submit="uploadImage"> 
-</upload-form>
+<upload-form ng-if="isUploadPhase" on-submit="uploadImage"> </upload-form>
+
+<div ng-if="!isUploadPhase">
+	<text-box model="floorplan.name" label="Name"> </text-box>
+
+	<text-area model="floorplan.description" label="Description"> </text-area>
+
+	<button class="btn btn-primary" ng-click="updateFloorplan()">
+		Create new floorplan 
+	</button>
+</div>
+
+<div ng-if="isLightPositionPhase">
+	<h3>LIGHT POSITION PHASE ON</h3>
+</div>
