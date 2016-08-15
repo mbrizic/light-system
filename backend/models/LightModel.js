@@ -9,6 +9,7 @@ module.exports = function(db, Sequelize) {
 		name: {
 			type: Sequelize.STRING,
 			required: true,
+			unique: true,
 		},
 		description: {
 			type: Sequelize.STRING,

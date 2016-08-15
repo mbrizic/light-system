@@ -10,9 +10,14 @@
 	</div>
 
 	<div class="col-xs-8">
-		{{ selectedFloorplan }}
-	</div>
+		<h2>
+			{{ selectedFloorplan.name }}
+		</h2>
 
+		<ul> 
+			<li ng-repeat="light in selectedFloorplan.lights"> {{light.name}} -- {{light.intensity}} </li>
+		</ul>
+	</div>
 
 	<div class="col-xs-2">
 		<div ng-repeat="floorplan in floorplans">

@@ -19,11 +19,17 @@ fs
 });
 
 Object.keys(db).forEach(function(modelName) {
+	var dbEntity = db[modelName];
+
     if ("associate" in db[modelName]) {
-        db[modelName].associate(db);
+        dbEntity.associate(db);
     }
+
     if("seed" in db[modelName]){
-        //db[modelName].seed();
+    	dbEntity.count().then(count => {
+    		if(count == 0)
+        		dbEntity.seed();
+    	});
     }
 });
 
