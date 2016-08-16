@@ -20,7 +20,7 @@ function getAll() {
 }
 
 function create (floorplanDto) {
-	return floorplan.create(floorplanDto);
+	return floorplan.create(floorplanDto).then(mapImageUrlPath);
 }
 
 function update (floorplanDto) {
