@@ -17,6 +17,8 @@
 		<h2>
 			{{ selectedFloorplan.name }}
 		</h2>
+		
+		<img class="floorplan-image" ng-src="{{selectedFloorplan.imageUrl}}"/>
 
 		<ul> 
 			<li ng-repeat="light in selectedFloorplan.lights"> {{light.name}} -- {{light.intensity}} </li>

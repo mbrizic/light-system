@@ -30,6 +30,8 @@ app.use('/src', express.static(__dirname + '/frontend'));
 app.use('/views', express.static(__dirname + '/frontend/views'));
 app.use('/components', express.static(__dirname + '/frontend/components'));
 app.use('/services', express.static(__dirname + '/frontend/services'));
+app.use('/styles', express.static(__dirname + '/frontend/styles'));
+app.use(config.imagesFolderUrl, express.static(__dirname + '/uploads'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -46,7 +48,6 @@ var fileUploadApi = require('./backend/routes/fileUploadApi');
 
 var routes = require('./backend/routes/routes');
 
-//TODO: better namespace those routes
 app.use('/api/lights', lightsApi);
 app.use('/api/floorplans', floorplansApi);
 app.use('/api/fileUpload', fileUploadApi);

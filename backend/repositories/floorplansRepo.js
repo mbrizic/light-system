@@ -1,5 +1,6 @@
 var floorplan = require('../models').Floorplan;
 var light = require('../models').Light;
+var config = require('../config');
 
 var lightsRelation = floorplan.hasMany(light, { 
 	as: 'lights',
@@ -9,13 +10,13 @@ var lightsRelation = floorplan.hasMany(light, {
 function getById (id) {
 	return floorplan.findById(id, {
 		include: [ lightsRelation ]
-	});
+	}).then(mapImageUrlPath);
 }
 
 function getAll() {
 	return floorplan.findAll({
 		include: [ lightsRelation ]
-	});
+	}).then(mapImageUrlPath);
 }
 
 function create (floorplanDto) {
@@ -27,6 +28,13 @@ function update (floorplanDto) {
 		where: {
 			id: floorplanDto.id
 		}
+	});
+}
+
+function mapImageUrlPath(response){
+	return response.map(x => { 
+		x.imageUrl = config.imagesFolderUrl + '/' + x.imageUrl;
+		return x;
 	});
 }
 

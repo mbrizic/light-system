@@ -7,7 +7,7 @@ function editorController($scope, $http, $routeParams, $location, Upload) {
     $scope.isLightPositionPhase = false;
 
     $scope.uploadImage = uploadImage;
-    $scope.updateFloorplan = updateFloorplan;
+    $scope.createNewFloorplan = createNewFloorplan;
 
     function uploadImage (file) {
         Upload.upload({
@@ -17,7 +17,6 @@ function editorController($scope, $http, $routeParams, $location, Upload) {
             $scope.isUploadPhase = false;
 
             $scope.floorplan.imageUrl = response.filename;
-
         }, function (error) {
 
         }, function (event) { 
@@ -26,17 +25,18 @@ function editorController($scope, $http, $routeParams, $location, Upload) {
         });
     };
 
-    function createNewFloorplan(filename) {
+    function createNewFloorplan() {
         $http.post('/api/floorplans/', $scope.floorplan).then(function (response) {
+            $scope.isLightPositionPhase = true;
             $scope.floorplan = response;
         });
     }
 
-    function updateFloorplan(){
-        $http.put('/api/floorplans', $scope.floorplan).then(function (response) {
-            $scope.isLightPositionPhase = true;
-        });
-    }
+    // function updateFloorplan(){
+    //     $http.put('/api/floorplans', $scope.floorplan).then(function (response) {
+    //         $scope.isLightPositionPhase = true;
+    //     });
+    // }
 }
 
 lightSystem.controller('editorController', editorController);
