@@ -16,7 +16,7 @@ function getById (id) {
 function getAll() {
 	return floorplan.findAll({
 		include: [ lightsRelation ]
-	}).then(mapImageUrlPath);
+	}).then(mapImageUrlPaths);
 }
 
 function create (floorplanDto) {
@@ -32,6 +32,11 @@ function update (floorplanDto) {
 }
 
 function mapImageUrlPath(response){
+	response.imageUrl = config.imagesFolderUrl + '/' + response.imageUrl;
+	return response;
+}
+
+function mapImageUrlPaths(response){
 	return response.map(x => { 
 		x.imageUrl = config.imagesFolderUrl + '/' + x.imageUrl;
 		return x;

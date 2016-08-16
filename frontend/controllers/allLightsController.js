@@ -1,11 +1,11 @@
-allLightsController.$inject = ['$scope', '$http']; 
-function allLightsController($scope, $http){
+allLightsController.$inject = ['$scope', 'lightRepository']; 
+function allLightsController($scope, lightRepository){
 	$scope.toggleLight = toggleLight;
 
 	init();
 
 	function init(){
-		$http.get('api/lights').then(function (response) {
+		lightRepository.getAll().then(function (response) {
 			$scope.lights = response;
 		});	
 	}

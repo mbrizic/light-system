@@ -17,8 +17,9 @@
 		<h2>
 			{{ selectedFloorplan.name }}
 		</h2>
-		
+
 		<img class="floorplan-image" ng-src="{{selectedFloorplan.imageUrl}}"/>
+		<a href="/editor/{{selectedFloorplan.id}}" class="pull-right">edit</a>
 
 		<ul> 
 			<li ng-repeat="light in selectedFloorplan.lights"> {{light.name}} -- {{light.intensity}} </li>

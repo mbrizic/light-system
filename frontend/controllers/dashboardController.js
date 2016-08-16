@@ -1,11 +1,11 @@
-dashboardController.$inject = ['$scope', '$http', '$location', 'sharedDataService'];
-function dashboardController($scope, $http, $location, sharedDataService) {
+dashboardController.$inject = ['$scope', 'floorplanRepository', '$location', 'sharedDataService'];
+function dashboardController($scope, floorplanRepository, $location, sharedDataService) {
 	$scope.selectFloorplan = selectFloorplan;
 
 	init();
 
 	function init(){
-		$http.get('/api/floorplans').then(function (response) {
+		floorplanRepository.getAll().then(function (response) {
 			$scope.floorplans = response;
 			$scope.selectedFloorplan = response[0];
 		});	

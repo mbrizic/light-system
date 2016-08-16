@@ -30,6 +30,7 @@ app.use('/src', express.static(__dirname + '/frontend'));
 app.use('/views', express.static(__dirname + '/frontend/views'));
 app.use('/components', express.static(__dirname + '/frontend/components'));
 app.use('/services', express.static(__dirname + '/frontend/services'));
+app.use('/repositories', express.static(__dirname + '/frontend/repositories'));
 app.use('/styles', express.static(__dirname + '/frontend/styles'));
 app.use(config.imagesFolderUrl, express.static(__dirname + '/uploads'));
 

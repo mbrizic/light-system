@@ -1,22 +1,25 @@
-editorController.$inject = ['$scope', '$http', '$routeParams', '$location', 'Upload'];
-function editorController($scope, $http, $routeParams, $location, Upload) {
+editorController.$inject = ['$scope', 'floorplanRepository', '$routeParams', '$location', 'fileRepository'];
+function editorController($scope, floorplanRepository, $routeParams, $location, fileRepository) {
     $scope.floorplan = {};
 	$scope.floorplanId = $routeParams.id;
-	$scope.isEditMode = $scope.floorplanId == undefined;
-    $scope.isUploadPhase = true;
-    $scope.isLightPositionPhase = false;
+	$scope.isEditMode = $scope.floorplanId != undefined;
+    $scope.isLightPositionPhase = $scope.isEditMode;
 
     $scope.uploadImage = uploadImage;
     $scope.createNewFloorplan = createNewFloorplan;
+    $scope.onFloorplanClick = onFloorplanClick;
+
+    init();
+
+    function init(){
+        if($scope.isEditMode) getFloorplan();
+    }
 
     function uploadImage (file) {
-        Upload.upload({
-            url: 'api/fileupload', 
-            data: { file: file }
-        }).then(function (response) {
-            $scope.isUploadPhase = false;
-
+        fileRepository.upload(file)
+        .then(function (response) {
             $scope.floorplan.imageUrl = response.filename;
+            $scope.isEditMode = true;
         }, function (error) {
 
         }, function (event) { 
@@ -26,10 +29,23 @@ function editorController($scope, $http, $routeParams, $location, Upload) {
     };
 
     function createNewFloorplan() {
-        $http.post('/api/floorplans/', $scope.floorplan).then(function (response) {
+        floorplanRepository.createNew($scope.floorplan).then(function (response) {
             $scope.isLightPositionPhase = true;
             $scope.floorplan = response;
         });
+    }
+
+    function getFloorplan() {
+        floorplanRepository.getById($scope.floorplanId).then(function (response) {
+            $scope.floorplan = response;
+        });
+    }
+
+    function onFloorplanClick(event){
+        var newLightDto = {
+            x: event.offsetX,
+            y: event.offsetY, 
+        };
     }
 
     // function updateFloorplan(){

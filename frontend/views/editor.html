@@ -1,8 +1,8 @@
 <h1>editor</h1>
 
-<upload-form ng-if="isUploadPhase" on-submit="uploadImage"> </upload-form>
+<upload-form ng-if="!isEditMode" on-submit="uploadImage"> </upload-form>
 
-<div ng-if="!isUploadPhase">
+<div ng-if="isEditMode" ng-class="isLightPositionPhase ? 'col-xs-3' : 'col-xs-12'">
 	<text-box model="floorplan.name" label="Name"> </text-box>
 
 	<text-area model="floorplan.description" label="Description"> </text-area>
@@ -12,6 +12,9 @@
 	</button>
 </div>
 
-<div ng-if="isLightPositionPhase">
+<div ng-if="isEditMode && isLightPositionPhase">
 	<h3>LIGHT POSITION PHASE ON</h3>
+	<p>click on floorplan to add lights</p>
+
+	<img class="floorplan-image" ng-src="{{ floorplan.imageUrl }}" ng-click="onFloorplanClick($event)"/>
 </div>
