@@ -7,25 +7,19 @@
 
 	<text-area model="floorplan.description" label="Description"> </text-area>
 
-	<button class="btn btn-primary" ng-click="createNewFloorplan()">
-		<span ng-if="isEditMode">Save changes</span>
-		<span ng-if="!isEditMode">Create new floorplan</span>
-	</button>
+	<button class="btn btn-primary" ng-if="isLightPositionPhase"  
+		ng-click="updateFloorplan()">Save changes</button>
+	<button class="btn btn-primary" ng-if="!isLightPositionPhase" ng-click="createNewFloorplan()">Create new floorplan</button>
 </div>
 
 <div ng-if="isEditMode && isLightPositionPhase">
-	<h3>LIGHT POSITION PHASE ON</h3>
 	<p>click on floorplan to add lights</p>
-	
-	<image-marker ng-repeat="light in floorplan.lights" marker="light">
-	</image-marker>
 
-	<img class="floorplan-image" 
-		 ng-src="{{ floorplan.imageUrl }}" 
-		 ng-click="onFloorplanClick($event)"
-		 uib-popover-template="popover.templateId"
-		 popover-title="{{popover.title}}"
-		 popover-is-open="popover.isOpen"
-		 popover-trigger="'none'"
-		 popover-placement="auto right"/>
+	<!-- TODO: add some light toggle logic here -->
+	<floorplan-renderer
+		floorplan="floorplan" 
+		on-floorplan-click="onFloorplanClick"
+		on-popover-save="createNewLight"
+		popover="popover">
+	</floorplan-renderer>
 </div>

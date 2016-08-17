@@ -3,7 +3,7 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
     var floorplanId = $routeParams.id;
 
     $scope.floorplan = {};
-    $scope.light = { isDiscrete: true, floorplanId: floorplanId };
+    $scope.light = {};
 	$scope.isEditMode = floorplanId != undefined;
     $scope.isLightPositionPhase = $scope.isEditMode;
 
@@ -39,6 +39,7 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
 
     function createNewFloorplan() {
         floorplanRepository.createNew($scope.floorplan).then(function (response) {
+            floorplanId = response.id;
             $scope.isLightPositionPhase = true;
             $scope.floorplan = response;
         });
@@ -52,8 +53,12 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
 
     function onFloorplanClick(event){
         $scope.popover.isOpen = true;
-        $scope.light.x = event.offsetX; 
-        $scope.light.y = event.offsetY;
+        $scope.light = { 
+            floorplanId: floorplanId,
+            x: event.offsetX,
+            y: event.offsetY,
+            isDiscrete: true, 
+        };
     }
 
     function createNewLight() {

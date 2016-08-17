@@ -15,7 +15,7 @@ function allLightsController($scope, lightRepository){
 			light.intensity = !light.intensity ? 1 : 0;
 
 		lightRepository.update(light).then(function (response) {
-			console.log(response);
+			
 		});
 	}
 }

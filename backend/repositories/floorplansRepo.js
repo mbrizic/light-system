@@ -20,7 +20,10 @@ function getAll() {
 }
 
 function create (floorplanDto) {
-	return floorplan.create(floorplanDto).then(mapImageUrlPath);
+	floorplanDto.lights = [];
+	return floorplan.create(floorplanDto, {
+		include: [ lightsRelation ]
+	}).then(mapImageUrlPath);
 }
 
 function update (floorplanDto) {
