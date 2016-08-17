@@ -8,13 +8,24 @@
 	<text-area model="floorplan.description" label="Description"> </text-area>
 
 	<button class="btn btn-primary" ng-click="createNewFloorplan()">
-		Create new floorplan 
+		<span ng-if="isEditMode">Save changes</span>
+		<span ng-if="!isEditMode">Create new floorplan</span>
 	</button>
 </div>
 
 <div ng-if="isEditMode && isLightPositionPhase">
 	<h3>LIGHT POSITION PHASE ON</h3>
 	<p>click on floorplan to add lights</p>
+	
+	<image-marker ng-repeat="light in floorplan.lights" marker="light">
+	</image-marker>
 
-	<img class="floorplan-image" ng-src="{{ floorplan.imageUrl }}" ng-click="onFloorplanClick($event)"/>
+	<img class="floorplan-image" 
+		 ng-src="{{ floorplan.imageUrl }}" 
+		 ng-click="onFloorplanClick($event)"
+		 uib-popover-template="popover.templateId"
+		 popover-title="{{popover.title}}"
+		 popover-is-open="popover.isOpen"
+		 popover-trigger="'none'"
+		 popover-placement="auto right"/>
 </div>

@@ -1,17 +1,26 @@
-editorController.$inject = ['$scope', 'floorplanRepository', '$routeParams', '$location', 'fileRepository'];
-function editorController($scope, floorplanRepository, $routeParams, $location, fileRepository) {
+editorController.$inject = ['$scope', 'floorplanRepository', 'lightRepository', '$routeParams', '$location', 'fileRepository'];
+function editorController($scope, floorplanRepository, lightRepository, $routeParams, $location, fileRepository) {
+    var floorplanId = $routeParams.id;
+
     $scope.floorplan = {};
-	$scope.floorplanId = $routeParams.id;
-	$scope.isEditMode = $scope.floorplanId != undefined;
+    $scope.light = { isDiscrete: true, floorplanId: floorplanId };
+	$scope.isEditMode = floorplanId != undefined;
     $scope.isLightPositionPhase = $scope.isEditMode;
 
     $scope.uploadImage = uploadImage;
     $scope.createNewFloorplan = createNewFloorplan;
     $scope.onFloorplanClick = onFloorplanClick;
+    $scope.createNewLight = createNewLight;
+ 
+    $scope.popover = {
+        templateId: 'popovers/addEditLightPopover.html',
+        title: "Add new light to floorplan",
+        isOpen: false,
+    };
 
     init();
 
-    function init(){
+    function init() {
         if($scope.isEditMode) getFloorplan();
     }
 
@@ -36,23 +45,24 @@ function editorController($scope, floorplanRepository, $routeParams, $location, 
     }
 
     function getFloorplan() {
-        floorplanRepository.getById($scope.floorplanId).then(function (response) {
+        floorplanRepository.getById(floorplanId).then(function (response) {
             $scope.floorplan = response;
         });
     }
 
     function onFloorplanClick(event){
-        var newLightDto = {
-            x: event.offsetX,
-            y: event.offsetY, 
-        };
+        $scope.popover.isOpen = true;
+        $scope.light.x = event.offsetX; 
+        $scope.light.y = event.offsetY;
     }
 
-    // function updateFloorplan(){
-    //     $http.put('/api/floorplans', $scope.floorplan).then(function (response) {
-    //         $scope.isLightPositionPhase = true;
-    //     });
-    // }
+    function createNewLight() {
+        lightRepository.createNew($scope.light).then(function (response) {
+            $scope.popover.isOpen = false;
+            $scope.floorplan.lights.push(response);
+            $scope.light = { isDiscrete: true, floorplanId: floorplanId };
+        });
+    }
 }
 
 lightSystem.controller('editorController', editorController);

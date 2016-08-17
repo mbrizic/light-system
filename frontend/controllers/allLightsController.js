@@ -14,9 +14,9 @@ function allLightsController($scope, lightRepository){
 		if(light.isDiscrete)
 			light.intensity = !light.intensity ? 1 : 0;
 
-		$http.post('api/lights/' + light.id, light).then(function (response) {
+		lightRepository.update(light).then(function (response) {
 			console.log(response);
-		})
+		});
 	}
 }
 

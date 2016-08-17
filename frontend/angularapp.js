@@ -1,4 +1,4 @@
-var lightSystem = angular.module('lightSystem', ['ngRoute', 'ngAnimate', 'ngFileUpload', 'toaster'])
+var lightSystem = angular.module('lightSystem', ['ngRoute', 'ngAnimate', 'ngFileUpload', 'toaster', 'ui.bootstrap'])
 .config(appConfig);
 
 appConfig.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];

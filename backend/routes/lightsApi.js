@@ -16,6 +16,14 @@ router.get('/:id', (req, res, next) => {
 	});
 });
 
+router.post('/', (req, res, next) => {
+	var dto = req.body;
+	
+	lightsRepo.create(dto).then(response => {
+		res.send(response);
+	});
+});
+
 router.post('/:id', (req, res, next) => {
 	var id = req.params.id;
 	var dto = req.body;
