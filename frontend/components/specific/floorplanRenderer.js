@@ -7,6 +7,7 @@ lightSystem.directive('floorplanRenderer', function(){
 	return {
 		scope: {
 			floorplan: '=',
+			light: '=',
 			popover: '=',
 			onFloorplanClick: '=',
 			onPopoverSave: '=',

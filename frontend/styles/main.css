@@ -14,3 +14,10 @@ image-marker {
     border-radius: 50%;
 }
 
+div.status-on {
+    background: rgba(255, 255, 0, 0.2);;
+}
+
+div.status-off {
+    background: white;
+}

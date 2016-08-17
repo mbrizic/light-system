@@ -1,7 +1,7 @@
-<div ng-repeat="light in lights">
+<div ng-repeat="light in lights" ng-class="light.intensity != 0 ? 'status-on' : 'status-off' ">
 	<h2> {{light.name}} </h2>
 	<span>
-		{{light.intensity ? 'ON' : 'OFF'}}
+		{{light.intensity != 0 ? 'ON' : 'OFF'}}
 	</span>
 
 	<span ng-if="light.isDiscrete">
