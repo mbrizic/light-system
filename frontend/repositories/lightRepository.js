@@ -1,4 +1,4 @@
-lightSystem.service('lightRepository', ['$http', function ($http) {
+lightSystem.service('lightRepository', ['$http', 'Light', function ($http, Light) {
 	var baseUrl = '/api/lights/';
 
 	return {
@@ -9,7 +9,7 @@ lightSystem.service('lightRepository', ['$http', function ($http) {
 	};
 
 	function getAll() {
-		return $http.get(baseUrl);
+		return $http.get(baseUrl).then(mapIntoModel);
 	}
 
 	function getById(id) {
@@ -22,5 +22,15 @@ lightSystem.service('lightRepository', ['$http', function ($http) {
 
 	function update(lightDto){
 		return $http.post(baseUrl + lightDto.id, lightDto);
+	}
+
+	function mapIntoModel(lights){
+		if(lights.constructor !== Array){
+			lights = [lights];
+		}
+
+		return lights.map(function (light) {
+			return Light(light);
+		});
 	}
 }]);

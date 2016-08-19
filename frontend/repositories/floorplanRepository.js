@@ -1,15 +1,15 @@
-lightSystem.service('floorplanRepository', ['$http', function ($http) {
+lightSystem.service('floorplanRepository', ['$http', 'Floorplan', 'Light', function ($http, Floorplan, Light) {
 	var baseUrl = '/api/floorplans/';
 
 	return {
 		getAll: getAll,
 		getById: getById,
 		createNew: createNew,
-		update: update
+		update: update,
 	};
 
 	function getAll() {
-		return $http.get(baseUrl);
+		return $http.get(baseUrl).then(mapIntoModel);
 	}
 
 	function getById(id) {
@@ -22,5 +22,20 @@ lightSystem.service('floorplanRepository', ['$http', function ($http) {
 
 	function update(floorplanDto){
 		return $http.put(baseUrl, floorplanDto);
+	}
+
+	function mapIntoModel(floorplans){
+		if(floorplans.constructor !== Array){
+			floorplans = [floorplans];
+		}
+
+		return floorplans.map(function (floorplan) {
+			floorplan = Floorplan(floorplan);
+			floorplan.lights = floorplan.lights.map(function(light) { 
+				return Light(light);
+			});
+
+			return floorplan;
+		});
 	}
 }]);

@@ -1,4 +1,4 @@
-<div ng-repeat="light in lights" ng-class="light.intensity != 0 ? 'status-on' : 'status-off' ">
+<div ng-repeat="light in lights" ng-class="light.isTurnedOn() ? 'status-on' : 'status-off' ">
 	<h2> {{light.name}} </h2>
 
 	<light-toggle light="light">

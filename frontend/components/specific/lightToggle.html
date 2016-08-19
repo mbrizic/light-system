@@ -3,7 +3,7 @@
 </p>
 
 <span>
-	{{light.intensity != 0 ? 'ON' : 'OFF'}}
+	{{light.isTurnedOn() ? 'ON' : 'OFF'}}
 </span>
 
 <span ng-if="light.isDiscrete">
