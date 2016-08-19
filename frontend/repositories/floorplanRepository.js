@@ -5,6 +5,7 @@ lightSystem.service('floorplanRepository', ['$http', function ($http) {
 		getAll: getAll,
 		getById: getById,
 		createNew: createNew,
+		update: update
 	};
 
 	function getAll() {
@@ -19,7 +20,7 @@ lightSystem.service('floorplanRepository', ['$http', function ($http) {
 		return $http.post(baseUrl, newFloorplanDto);
 	}
 
-	function update(lightDto){
-		return $http.post(baseUrl + lightDto.id, lightDto);
+	function update(floorplanDto){
+		return $http.put(baseUrl, floorplanDto);
 	}
 }]);

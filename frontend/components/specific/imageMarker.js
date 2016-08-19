@@ -18,7 +18,7 @@ lightSystem.directive('imageMarker', function(){
 
 	return {
 		scope: {
-			marker: '='
+			marker: '=',
 		},
 		restrict: 'E',
 		controller: imageMarkerController,

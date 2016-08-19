@@ -21,3 +21,22 @@ div.status-on {
 div.status-off {
     background: white;
 }
+
+div.selected {
+    background: rgba(10, 50, 200, 0.1);
+}
+
+div.floorplan-slat {
+    line-height: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+div.floorplan-slat > a {
+    margin-left: 10px;
+}
+
+p.description {
+    color: #777;
+    font-style: italic;
+}

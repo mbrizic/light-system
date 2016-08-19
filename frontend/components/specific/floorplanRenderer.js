@@ -10,6 +10,7 @@ lightSystem.directive('floorplanRenderer', function(){
 			light: '=',
 			popover: '=',
 			onFloorplanClick: '=',
+			onMarkerClick: '=',
 			onPopoverSave: '=',
 		},
 		restrict: 'E',

@@ -1,9 +1,11 @@
 <div class="row">
 	<div class="col-xs-2">
 		<h3>floorplans</h3>
-		<div ng-repeat="floorplan in floorplans">
+		<div ng-repeat="floorplan in floorplans"
+			 class="floorplan-slat"
+			 ng-class="isFloorplanSelected(floorplan) ? 'selected' : '' ">
 			<a href ng-click="selectFloorplan(floorplan)">
-				- {{ floorplan.name }}
+				{{ floorplan.name }}
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
 		</div>
@@ -21,12 +23,14 @@
 					<a href="/editor/{{selectedFloorplan.id}}">edit</a>
 				</small>
 			</h2>
-			<!-- TODO: hook up popover and actions here -->
+			<p class="description">{{ selectedFloorplan.description }}</p>
 			<floorplan-renderer
-				floorplan="selectedFloorplan" 
-				on-floorplan-click=""
+				floorplan="selectedFloorplan"
+				light="light"
+				on-floorplan-click="onFloorplanClick"
+				on-marker-click="onMarkerClick"
 				on-popover-save=""
-				popover="">
+				popover="popover">
 			</floorplan-renderer>	
 		</div>
 	</div>

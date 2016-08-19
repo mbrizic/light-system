@@ -9,6 +9,7 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
 
     $scope.uploadImage = uploadImage;
     $scope.createNewFloorplan = createNewFloorplan;
+    $scope.updateFloorplan = updateFloorplan;
     $scope.onFloorplanClick = onFloorplanClick;
     $scope.createNewLight = createNewLight;
  
@@ -42,6 +43,18 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
             floorplanId = response.id;
             $scope.isLightPositionPhase = true;
             $scope.floorplan = response;
+        });
+    }
+
+    function updateFloorplan() {
+        var dto = {
+            id: $scope.floorplan.id, 
+            name: $scope.floorplan.name, 
+            description: $scope.floorplan.description
+        };
+
+        floorplanRepository.update(dto).then(function (reponse) {
+            $location.path('/');
         });
     }
 

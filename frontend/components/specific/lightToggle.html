@@ -1,0 +1,19 @@
+<p class="description">
+	{{light.description}}
+</p>
+
+<span>
+	{{light.intensity != 0 ? 'ON' : 'OFF'}}
+</span>
+
+<span ng-if="light.isDiscrete">
+	<button ng-click="toggleLight(light)"> ON/OFF</button> 		
+</span>
+
+<span ng-if="!light.isDiscrete">
+	<input type="range" min="0" max="100" 
+		ng-model="light.intensity" 
+		ng-change="toggleLight(light)"
+		ng-model-options="{ debounce: 500 }">
+	{{light.intensity}}
+</span>
