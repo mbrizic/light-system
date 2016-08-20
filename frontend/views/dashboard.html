@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-xs-2">
+<div class="row" ng-if="!isLoading">
+	<div class="col-xs-2" ng-if="floorplans.length">
 		<h3>floorplans</h3>
 		<div ng-repeat="floorplan in floorplans"
 			 class="floorplan-slat"
@@ -13,6 +13,7 @@
 		<a href="editor" class="btn btn-primary" ng-if="isEditMode">
 			Add new floorplan
 		</a>
+		<check-box label="Toggle edit mode" model="isEditMode">
 	</div>
 
 	<div class="col-xs-8">
@@ -23,7 +24,6 @@
 					<a href="/editor/{{selectedFloorplan.id}}">edit</a>
 				</small>
 			</h2>
-		</div>
 			<p class="description">{{ selectedFloorplan.description }}</p>
 			<floorplan-renderer
 				floorplan="selectedFloorplan"
@@ -32,7 +32,17 @@
 				on-marker-click="onMarkerClick"
 				on-popover-save=""
 				popover="popover">
-			</floorplan-renderer>	
+			</floorplan-renderer>
+		</div>
+
+		<div ng-if="!selectedFloorplan">
+			<h3>You don't have a light setup yet.</h3>
+			<h4>
+				Click
+				<a href="editor">here</a>
+				to add a floorplan.
+			</h4>
+		</div>
 	</div>
 
 	<scenes-list 
@@ -44,4 +54,3 @@
 	</scenes-list>
 </div>
 
-<check-box label="Toggle edit mode" model="isEditMode">

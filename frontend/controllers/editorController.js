@@ -8,8 +8,7 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
     $scope.isLightPositionPhase = $scope.isEditMode;
 
     $scope.uploadImage = uploadImage;
-    $scope.createFloorplan = createFloorplan;
-    $scope.updateFloorplan = updateFloorplan;
+    $scope.saveFloorplan = saveFloorplan;
     $scope.onFloorplanClick = onFloorplanClick;
     $scope.createLight = createLight;
  
@@ -37,6 +36,10 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
             $scope.progress = 'progress: ' + progressPercentage + '% ';
         });
     };
+
+    function saveFloorplan(){
+        $scope.isLightPositionPhase ? updateFloorplan() : createFloorplan();
+    }
 
     function createFloorplan() {
         floorplanRepository.create($scope.floorplan).then(function (response) {

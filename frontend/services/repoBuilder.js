@@ -25,7 +25,7 @@ function repoBuilder($http) {
 		}
 
 		function update(dto){
-			return $http.post(baseUrl + dto.id, dto);
+			return $http.put(baseUrl, dto);
 		}
 	}
 

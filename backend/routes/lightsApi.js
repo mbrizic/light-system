@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 	});
 });
 
-router.post('/:id', (req, res, next) => {
+router.put('/', (req, res, next) => {
 	var id = req.params.id;
 	var dto = req.body;
 

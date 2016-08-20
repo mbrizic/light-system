@@ -2,6 +2,7 @@ dashboardController.$inject = ['$scope', 'floorplanRepository', '$location'];
 function dashboardController($scope, floorplanRepository, $location) {
 	$scope.light = null;
 	$scope.isEditMode = true;
+	$scope.isLoading = true;
 
 	$scope.selectFloorplan = selectFloorplan;
 	$scope.onFloorplanClick = onFloorplanClick;
@@ -19,6 +20,7 @@ function dashboardController($scope, floorplanRepository, $location) {
 
 	function init(){
 		floorplanRepository.getAll().then(function (response) {
+			$scope.isLoading = false;
 			$scope.floorplans = response;
 			$scope.selectedFloorplan = response[0];
 		});	

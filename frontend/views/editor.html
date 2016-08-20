@@ -2,19 +2,20 @@
 
 <upload-form ng-if="!isEditMode" on-submit="uploadImage"> </upload-form>
 
-<div ng-if="isEditMode" ng-class="isLightPositionPhase ? 'col-xs-3' : 'col-xs-12'">
+<form ng-if="isEditMode" ng-submit="saveFloorplan()" ng-class="isLightPositionPhase ? 'col-xs-3' : 'col-xs-12'">
 	<text-box model="floorplan.name" label="Name"> </text-box>
 
 	<text-area model="floorplan.description" label="Description"> </text-area>
 
-	<button class="btn btn-primary" ng-if="isLightPositionPhase"  ng-click="updateFloorplan()">Save changes</button>
-	<button class="btn btn-primary" ng-if="!isLightPositionPhase" ng-click="createFloorplan()">Create new floorplan</button>
-</div>
+	<button class="btn btn-primary" ng-click="saveFloorplan()">
+		<span ng-if="isLightPositionPhase">Save changes</span>
+		<span ng-if="isLightPositionPhase">Create</span>
+	</button>
+</form>
 
 <div ng-if="isEditMode && isLightPositionPhase">
 	<p>click on floorplan to add lights</p>
 
-	<!-- TODO: add some light toggle logic here -->
 	<floorplan-renderer
 		floorplan="floorplan"
 		light="light"
