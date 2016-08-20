@@ -1,5 +1,5 @@
-layoutController.$inject = ['$scope', '$http', '$location', 'sharedDataService'];
-function layoutController($scope, $http, $location, sharedDataService) {
+layoutController.$inject = ['$scope', '$http', '$location'];
+function layoutController($scope, $http, $location) {
 
 }
 

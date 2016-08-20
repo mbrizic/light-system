@@ -8,7 +8,7 @@
 	<text-area model="floorplan.description" label="Description"> </text-area>
 
 	<button class="btn btn-primary" ng-if="isLightPositionPhase"  ng-click="updateFloorplan()">Save changes</button>
-	<button class="btn btn-primary" ng-if="!isLightPositionPhase" ng-click="createNewFloorplan()">Create new floorplan</button>
+	<button class="btn btn-primary" ng-if="!isLightPositionPhase" ng-click="createFloorplan()">Create new floorplan</button>
 </div>
 
 <div ng-if="isEditMode && isLightPositionPhase">
@@ -19,7 +19,7 @@
 		floorplan="floorplan"
 		light="light"
 		on-floorplan-click="onFloorplanClick"
-		on-popover-save="createNewLight"
+		on-popover-save="createLight"
 		popover="popover">
 	</floorplan-renderer>
 </div>

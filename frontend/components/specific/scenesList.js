@@ -8,7 +8,7 @@ lightSystem.directive('scenesList', function(){
 		function addNewScene() {
 			$scope.newScene.floorplanId = $scope.floorplanId,
 
-			sceneRepository.createNew($scope.newScene).then(function (response) {
+			sceneRepository.create($scope.newScene).then(function (response) {
 				$scope.scenes.push(response);
 			});
 		}

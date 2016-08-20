@@ -8,10 +8,10 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
     $scope.isLightPositionPhase = $scope.isEditMode;
 
     $scope.uploadImage = uploadImage;
-    $scope.createNewFloorplan = createNewFloorplan;
+    $scope.createFloorplan = createFloorplan;
     $scope.updateFloorplan = updateFloorplan;
     $scope.onFloorplanClick = onFloorplanClick;
-    $scope.createNewLight = createNewLight;
+    $scope.createLight = createLight;
  
     $scope.popover = {
         templateId: 'popovers/addEditLightPopover.html',
@@ -38,8 +38,8 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
         });
     };
 
-    function createNewFloorplan() {
-        floorplanRepository.createNew($scope.floorplan).then(function (response) {
+    function createFloorplan() {
+        floorplanRepository.create($scope.floorplan).then(function (response) {
             floorplanId = response.id;
             $scope.isLightPositionPhase = true;
             $scope.floorplan = response;
@@ -74,8 +74,8 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
         };
     }
 
-    function createNewLight() {
-        lightRepository.createNew($scope.light).then(function (response) {
+    function createLight() {
+        lightRepository.create($scope.light).then(function (response) {
             $scope.popover.isOpen = false;
             $scope.floorplan.lights.push(response);
             $scope.light = { isDiscrete: true, floorplanId: floorplanId };
