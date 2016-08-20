@@ -29,7 +29,7 @@ module.exports = function(db, Sequelize) {
 	{
 		classMethods: {
 			associate: function(models) {
-				Floorplan.hasMany(models.Light);
+
 			},
 			seed: function(){
 				seedFloorplanData();
@@ -39,8 +39,7 @@ module.exports = function(db, Sequelize) {
 
 	function seedFloorplanData(){
 		Floorplan.bulkCreate([
-			{ name: "1st Floorplan", imageUrl: '', imageWidth: 1000, imageHeight: 1003 },
-			{ name: "2nd floorplan", imageUrl: '', imageWidth: 1500, imageHeight: 1500 },
+			{ name: "1st Floorplan", imageUrl: 'keep.jpg', imageWidth: 1000, imageHeight: 1003 },
 		]);
 	}
 

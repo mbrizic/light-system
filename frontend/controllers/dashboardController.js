@@ -1,8 +1,7 @@
 dashboardController.$inject = ['$scope', 'floorplanRepository', '$location', 'sharedDataService'];
 function dashboardController($scope, floorplanRepository, $location, sharedDataService) {
 	$scope.light = null;
-
-
+	$scope.isEditMode = true;
 
 	$scope.selectFloorplan = selectFloorplan;
 	$scope.onFloorplanClick = onFloorplanClick;

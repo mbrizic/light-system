@@ -10,7 +10,7 @@
 			</a>
 		</div>
 
-		<a href="editor" class="btn btn-primary">
+		<a href="editor" class="btn btn-primary" ng-if="isEditMode">
 			Add new floorplan
 		</a>
 	</div>
@@ -23,6 +23,7 @@
 					<a href="/editor/{{selectedFloorplan.id}}">edit</a>
 				</small>
 			</h2>
+		</div>
 			<p class="description">{{ selectedFloorplan.description }}</p>
 			<floorplan-renderer
 				floorplan="selectedFloorplan"
@@ -32,10 +33,15 @@
 				on-popover-save=""
 				popover="popover">
 			</floorplan-renderer>	
-		</div>
 	</div>
 
-	<div class="col-xs-2">
-		TODO: add scenes list here
-	</div>	
+	<scenes-list 
+		ng-if="selectedFloorplan"
+		scenes="selectedFloorplan.scenes" 
+		floorplan-id="selectedFloorplan.id"
+		is-edit-mode="isEditMode" 
+		class="col-xs-2"> 
+	</scenes-list>
 </div>
+
+<check-box label="Toggle edit mode" model="isEditMode">

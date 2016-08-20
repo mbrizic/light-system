@@ -56,10 +56,12 @@ module.exports = function(db, Sequelize) {
 	{
 		classMethods: {
 			associate: function(models) {
-				Light.belongsTo(models.Floorplan, { foreignKey: 'floorplanId' });
+				Light.belongsTo(models.Floorplan, { 
+					foreignKey: { name: 'floorplanId', allowNull: false }
+				});
 			},
 			seed: function () {
-				seedLightData();
+				//seedLightData();
 			}
 		}
 	});

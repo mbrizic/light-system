@@ -1,28 +1,34 @@
 var floorplan = require('../models').Floorplan;
-var light = require('../models').Light;
+var Light = require('../models').Light;
+var Scene = require('../models').Scene;
 var config = require('../config');
 
-var lightsRelation = floorplan.hasMany(light, { 
+var lightsRelation = floorplan.hasMany(Light, { 
 	as: 'lights',
+	foreignKey: 'floorplanId'
+});
+
+var scenesRelation = floorplan.hasMany(Scene, { 
+	as: 'scenes',
 	foreignKey: 'floorplanId'
 });
 
 function getById (id) {
 	return floorplan.findById(id, {
-		include: [ lightsRelation ]
+		include: [ lightsRelation, scenesRelation ]
 	}).then(mapImageUrlPath);
 }
 
 function getAll() {
 	return floorplan.findAll({
-		include: [ lightsRelation ]
+		include: [ lightsRelation, scenesRelation ]
 	}).then(mapImageUrlPaths);
 }
 
 function create (floorplanDto) {
 	floorplanDto.lights = [];
 	return floorplan.create(floorplanDto, {
-		include: [ lightsRelation ]
+		include: [ lightsRelation, scenesRelation ]
 	}).then(mapImageUrlPath);
 }
 

@@ -26,10 +26,7 @@ Object.keys(db).forEach(function(modelName) {
     }
 
     if("seed" in db[modelName]){
-    	//dbEntity.count().then(count => {
-    	//	if(count == 0)
-        		//dbEntity.seed();
-    	//});
+		dbEntity.seed();
     }
 });
 

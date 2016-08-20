@@ -1,4 +1,4 @@
-lightSystem.service('floorplanRepository', ['$http', 'Floorplan', 'Light', function ($http, Floorplan, Light) {
+lightSystem.service('floorplanRepository', ['$http', 'Floorplan', 'Light', 'Scene', function ($http, Floorplan, Light, Scene) {
 	var baseUrl = '/api/floorplans/';
 
 	return {
@@ -33,6 +33,9 @@ lightSystem.service('floorplanRepository', ['$http', 'Floorplan', 'Light', funct
 			floorplan = Floorplan(floorplan);
 			floorplan.lights = floorplan.lights.map(function(light) { 
 				return Light(light);
+			});
+			floorplan.scenes = floorplan.scenes.map(function(scene) { 
+				return Scene(scene);
 			});
 
 			return floorplan;

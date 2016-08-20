@@ -46,12 +46,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 var lightsApi = require('./backend/routes/lightsApi');
+var scenesApi = require('./backend/routes/scenesApi');
 var floorplansApi = require('./backend/routes/floorplansApi');
 var fileUploadApi = require('./backend/routes/fileUploadApi');
 
 var routes = require('./backend/routes/routes');
 
 app.use('/api/lights', lightsApi);
+app.use('/api/scenes', scenesApi);
 app.use('/api/floorplans', floorplansApi);
 app.use('/api/fileUpload', fileUploadApi);
 app.use('/', routes);
