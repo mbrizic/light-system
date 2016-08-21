@@ -33,4 +33,14 @@ router.put('/', (req, res, next) => {
 	});
 });
 
+router.post('/light', (req, res, next) => {
+	var dto = req.body;
+
+	scenesRepo.addLight(dto).then(response => {
+		res.send(response);
+	}, error => {
+		res.status(400).send(error);
+	});
+});
+
 module.exports = router;

@@ -1,0 +1,14 @@
+<div ng-repeat="scene in scenes" ng-class="scene.isTurnedOn() ? 'status-on' : 'status-off'">
+	<div class="row">
+		<h2> {{scene.name}} </h2>
+
+		<div class="col-xs-4">
+
+		</div>
+
+		<div class="col-xs-8">
+			Description: <small> {{scene.description }}</small> <br>
+		</div>
+	</div>
+	<hr>
+</div>

@@ -1,5 +1,12 @@
-allScenesController.$inject = ['$scope', '$http', 'toaster'];
-function allScenesController ($scope, $http, toaster) {
-	
+allScenesController.$inject = ['$scope', 'sceneRepository']; 
+function allScenesController($scope, sceneRepository){
+	init();
+
+	function init(){
+		sceneRepository.getAll().then(function (response) {
+			$scope.scenes = response;
+		});	
+	}
 }
+
 lightSystem.controller('allScenesController', allScenesController);

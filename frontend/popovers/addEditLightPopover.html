@@ -1,8 +1,18 @@
-<div class="form-group">
+<div class="form-group" ng-controller="addEditLightPopover">
 	<text-box model="light.name" label="Name"></text-box>
 	<text-area model="light.description" label="Description"></text-area>
 	<check-box model="light.isDiscrete" label="Discrete"></check-box>
 
-	<button ng-click="onPopoverSave()">Add new light</button>
+	<div ng-if="isEditMode">
+		Add light to scene:
+		<select-dropdown model="selectedSceneId" url="api/scenes"></select-dropdown>
+		<button ng-click="addLightToScene(selectedSceneId)">Add</button>
+	</div>
+
+	<button ng-click="saveLight()">
+		<span ng-if="!isEditMode"> Create </span>
+		<span ng-if="isEditMode">  Update </span>
+	</button>
+
 	<button ng-click="popover.isOpen = false">Cancel</button>
 </div>

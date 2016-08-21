@@ -1,0 +1,6 @@
+<div class="form-group">
+	<label>{{ label }}</label>
+	<select ng-model="model" class="form-control">
+		<option ng-repeat="option in options" value="{{option.id}}">{{ option.name }}</option>
+	</select>
+</div>

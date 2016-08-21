@@ -4,13 +4,22 @@ function repoBuilder($http) {
 	function create(options) {
 		var baseUrl = options.baseUrl;
 		var modelMapper = options.modelMapper;
+		var additionalActions = options.additionalActions;
 
-		return {
+		var actions = {
 			getAll: getAll,
 			getById: getById,
 			create: create,
 			update: update,
 		};
+
+		if(additionalActions){
+			additionalActions.forEach(function (action) {
+				actions[action.name] = action.action;
+			});
+		}
+
+		return actions;
 
 		function getAll() {
 			return $http.get(baseUrl).then(modelMapper);

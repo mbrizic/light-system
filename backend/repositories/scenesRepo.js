@@ -1,4 +1,24 @@
-var scene = require('../models').Scene; 
+var scene = require('../models').Scene;
+var light = require('../models').Light;
+var floorplan = require('../models').Floorplan; 
+var lightScene = require('../models').LightScene;
+
+var lightsRelation = light.belongsToMany(scene, { 
+	as: 'lights',
+	through: lightScene,
+	foreignKey: 'lightId',
+});
+
+var scenesRelation = light.belongsToMany(scene, { 
+	as: 'scenes',
+	through: lightScene,
+	foreignKey: 'sceneId',
+});
+
+var floorplanRelation = scene.belongsTo(floorplan, {
+	as: 'floorplan',
+	foreignKey: 'floorplanId',
+});
 
 function getById (id) {
 	return scene.findById(id);
@@ -13,18 +33,28 @@ function getForFloorplan (floorplanId){
 }
 
 function getAll() {
-	return scene.findAll();
+	return scene.findAll({
+		include: [ lightsRelation, floorplanRelation ],
+	});
 }
 
-function create (lightDto) {
-	return scene.create(lightDto);
+function create (sceneDto) {
+	return scene.create(sceneDto, {
+		include: [ lightsRelation, scenesRelation ],
+	});
 }
 
-function update (lightDto) {
-	return scene.update(lightDto, {
+function update (sceneDto) {
+	return scene.update(sceneDto, {
 		where: {
-			id: lightDto.id
+			id: sceneDto.id
 		}
+	});
+}
+
+function addLight(lightSceneDto) {
+	return lightScene.create(lightSceneDto, {
+		include: [ lightsRelation, scenesRelation ],
 	});
 }
 
@@ -34,4 +64,5 @@ module.exports = {
 	getAll,
 	create,
 	update,
+	addLight,
 };

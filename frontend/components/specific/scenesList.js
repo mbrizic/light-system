@@ -1,11 +1,11 @@
-lightSystem.directive('scenesList', function(){
+lightSystem.directive('scenesList', function() {
 	scenesListController.$inject = ['$scope', 'sceneRepository'];
 	function scenesListController($scope, sceneRepository) {
 		$scope.newScene = {};
 
-		$scope.addNewScene = addNewScene;
+		$scope.addScene = addScene;
 
-		function addNewScene() {
+		function addScene() {
 			$scope.newScene.floorplanId = $scope.floorplanId,
 
 			sceneRepository.create($scope.newScene).then(function (response) {

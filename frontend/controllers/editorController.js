@@ -10,7 +10,7 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
     $scope.uploadImage = uploadImage;
     $scope.saveFloorplan = saveFloorplan;
     $scope.onFloorplanClick = onFloorplanClick;
-    $scope.createLight = createLight;
+    $scope.onMarkerClick = onMarkerClick;
  
     $scope.popover = {
         templateId: 'popovers/addEditLightPopover.html',
@@ -77,12 +77,9 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
         };
     }
 
-    function createLight() {
-        lightRepository.create($scope.light).then(function (response) {
-            $scope.popover.isOpen = false;
-            $scope.floorplan.lights.push(response);
-            $scope.light = { isDiscrete: true, floorplanId: floorplanId };
-        });
+    function onMarkerClick(event) {
+        $scope.light = event;
+        $scope.popover.isOpen = true;
     }
 }
 
