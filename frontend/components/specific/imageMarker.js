@@ -2,6 +2,7 @@ lightSystem.directive('imageMarker', function(){
 	imageMarkerController.$inject = ['$scope'];
 	function imageMarkerController($scope) {
 
+
 	}
 
 	function imageMarkerLink($scope, $el, $attrs){
@@ -11,14 +12,22 @@ lightSystem.directive('imageMarker', function(){
 		var imageElementOffset = imageElement.offset();
 
 		$el.offset({ 
-			top: imageElementOffset.top + $scope.marker.y - elementMargin, 
-			left: imageElementOffset.left + $scope.marker.x - elementMargin,
+			top: imageElementOffset.top + $scope.light.y - elementMargin, 
+			left: imageElementOffset.left + $scope.light.x - elementMargin,
 		});
+
+		$scope.$watch('light.intensity', function () {
+			if($scope.light.isTurnedOn())
+				$el.css('background-color', 'yellow');
+			else
+				$el.css('background-color', 'grey');
+		});
+
 	}
 
 	return {
 		scope: {
-			marker: '=',
+			light: '=',
 		},
 		restrict: 'E',
 		controller: imageMarkerController,

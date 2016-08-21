@@ -20,7 +20,7 @@
 		<div ng-if="selectedFloorplan">
 			<h2>
 				{{ selectedFloorplan.name }}
-				<small>
+				<small ng-if="isEditMode">
 					<a href="/editor/{{selectedFloorplan.id}}">edit</a>
 				</small>
 			</h2>
