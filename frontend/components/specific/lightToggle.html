@@ -2,12 +2,8 @@
 	{{light.description}}
 </p>
 
-<span>
-	{{light.isTurnedOn() ? 'ON' : 'OFF'}}
-</span>
-
 <span ng-if="light.isDiscrete">
-	<toggle ng-model="light.intensity" ng-change="toggleLight(light)"></toggle>
+	<toggle ng-model="light.intensity" ng-change="toggleLight(light)" style="quick"></toggle>
 </span>
 
 <span ng-if="!light.isDiscrete">

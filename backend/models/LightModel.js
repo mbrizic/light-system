@@ -59,6 +59,11 @@ module.exports = function(db, Sequelize) {
 				Light.belongsTo(models.Floorplan, { 
 					foreignKey: { name: 'floorplanId', allowNull: false }
 				});
+
+				Light.belongsToMany(models.Scene, {
+					foreignKey: 'sceneId',
+					through: models.LightScene,
+				});
 			},
 			seed: function () {
 				//seedLightData();

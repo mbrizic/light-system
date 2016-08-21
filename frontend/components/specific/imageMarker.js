@@ -16,8 +16,10 @@ lightSystem.directive('imageMarker', function(){
 		});
 
 		$scope.$watch('light.intensity', function () {
-			var color = $scope.light.isTurnedOn() ? 'yellow' : 'grey';
-			$el.css('background-color', color);
+			if($scope.light.isTurnedOn){
+				var color = $scope.light.isTurnedOn() ? 'yellow' : 'grey';
+				$el.css('background-color', color);
+			}
 		});
 	}
 
