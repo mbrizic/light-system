@@ -1,4 +1,6 @@
-var lightSystem = angular.module('lightSystem', ['ngRoute', 'ngAnimate', 'ngFileUpload', 'toaster', 'ui.bootstrap'])
+var dependencies = ['ngRoute', 'ngAnimate', 'ngFileUpload', 'toaster', 'ui.bootstrap', 'ui.toggle'];
+
+var lightSystem = angular.module('lightSystem', dependencies)
 .config(appConfig);
 
 appConfig.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
@@ -28,3 +30,4 @@ function appConfig($routeProvider, $locationProvider, $httpProvider){
 
 	$httpProvider.interceptors.push('interceptor');
 }
+

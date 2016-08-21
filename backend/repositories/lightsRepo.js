@@ -1,4 +1,10 @@
-var light = require('../models').Light; 
+var light = require('../models').Light;
+var floorplan = require('../models').Floorplan;
+
+var floorplanRelation = light.belongsTo(floorplan, {
+	as: 'floorplan',
+	foreignKey: 'floorplanId'
+});
 
 function getById (id) {
 	return light.findById(id);
@@ -13,7 +19,9 @@ function getForFloorplan (floorplanId){
 }
 
 function getAll() {
-	return light.findAll();
+	return light.findAll({
+		include: [ floorplanRelation ]
+	});
 }
 
 function create (lightDto) {

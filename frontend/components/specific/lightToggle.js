@@ -6,7 +6,7 @@ lightSystem.directive('lightToggle', function(){
 
 		function toggleLight(light){
 			if(light.isDiscrete){
-				light.intensity = !light.intensity ? 1 : 0;
+				light.intensity = light.intensity ? 1 : 0;
 			}
 
 			lightRepository.update(light);

@@ -1,8 +1,16 @@
-<div ng-repeat="light in lights" ng-class="light.isTurnedOn() ? 'status-on' : 'status-off' ">
-	<h2> {{light.name}} </h2>
+<div ng-repeat="light in lights" ng-class="light.isTurnedOn() ? 'status-on' : 'status-off'">
+	<div class="row">
+		<h2> {{light.name}} </h2>
 
-	<light-toggle light="light">
-	</light-toggle>
+		<div class="col-xs-4">
+			<light-toggle light="light">
+			</light-toggle>
+		</div>
 
+		<div class="col-xs-8">
+			Description: <small> {{light.floorplan.description }}</small> <br>
+			On floorplan: <small> {{light.floorplan.name }}</small>
+		</div>	
+	</div>
 	<hr>
 </div>

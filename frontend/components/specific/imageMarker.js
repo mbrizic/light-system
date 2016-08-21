@@ -2,7 +2,6 @@ lightSystem.directive('imageMarker', function(){
 	imageMarkerController.$inject = ['$scope'];
 	function imageMarkerController($scope) {
 
-
 	}
 
 	function imageMarkerLink($scope, $el, $attrs){
@@ -17,12 +16,9 @@ lightSystem.directive('imageMarker', function(){
 		});
 
 		$scope.$watch('light.intensity', function () {
-			if($scope.light.isTurnedOn())
-				$el.css('background-color', 'yellow');
-			else
-				$el.css('background-color', 'grey');
+			var color = $scope.light.isTurnedOn() ? 'yellow' : 'grey';
+			$el.css('background-color', color);
 		});
-
 	}
 
 	return {

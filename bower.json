@@ -22,6 +22,7 @@
     "angular-animate": "~1.4.8",
     "AngularJS-Toaster": "angularjs-toaster#~0.4.181",
     "ng-file-upload": "~12.0.4",
-    "angular-bootstrap": "~2.0.2"
+    "angular-bootstrap": "~2.0.2",
+    "angular-bootstrap-toggle": "~0.1.2"
   }
 }

@@ -7,7 +7,7 @@
 </span>
 
 <span ng-if="light.isDiscrete">
-	<button ng-click="toggleLight(light)"> ON/OFF</button> 		
+	<toggle ng-model="light.intensity" ng-change="toggleLight(light)"></toggle>
 </span>
 
 <span ng-if="!light.isDiscrete">
