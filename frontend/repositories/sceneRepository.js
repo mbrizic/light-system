@@ -3,7 +3,7 @@ function sceneRepository($http, modelMapper, repoBuilder) {
 	return repoBuilder.create({
 		baseUrl: '/api/scenes/',
 		modelMapper: modelMapper.scene,
-		additionalActions: [ { name: 'addLight', action: addLight } ],
+		additionalActions: [ addLight ],
 	});
 
 	function addLight(light) {

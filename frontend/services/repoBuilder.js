@@ -15,7 +15,7 @@ function repoBuilder($http) {
 
 		if(additionalActions){
 			additionalActions.forEach(function (action) {
-				actions[action.name] = action.action;
+				actions[action.name] = action;
 			});
 		}
 
