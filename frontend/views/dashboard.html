@@ -10,17 +10,17 @@
 			</a>
 		</div>
 
-		<a href="editor" class="btn btn-primary" ng-if="isEditMode">
+		<a href="editor" class="btn btn-primary" ng-if="vm.isEditMode">
 			Add new floorplan
 		</a>
-		<check-box label="Toggle edit mode" model="isEditMode">
+		<check-box label="Toggle edit mode" model="vm.isEditMode">
 	</div>
 
 	<div class="col-xs-8">
 		<div ng-if="selectedFloorplan">
 			<h2>
 				{{ selectedFloorplan.name }}
-				<small ng-if="isEditMode">
+				<small ng-if="vm.isEditMode">
 					<a href="/editor/{{selectedFloorplan.id}}">edit</a>
 				</small>
 			</h2>
@@ -49,8 +49,7 @@
 		ng-if="selectedFloorplan"
 		scenes="selectedFloorplan.scenes" 
 		floorplan-id="selectedFloorplan.id"
-		is-edit-mode="isEditMode" 
+		is-edit-mode="vm.isEditMode" 
 		class="col-xs-2"> 
 	</scenes-list>
 </div>
-

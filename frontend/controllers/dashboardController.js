@@ -1,7 +1,7 @@
 dashboardController.$inject = ['$scope', 'floorplanRepository', '$location'];
 function dashboardController($scope, floorplanRepository, $location) {
 	$scope.light = null;
-	$scope.isEditMode = false;
+	$scope.vm = { isEditMode: false };
 	$scope.isLoading = true;
 
 	$scope.selectFloorplan = selectFloorplan;
