@@ -25,7 +25,6 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/', (req, res, next) => {
-	var id = req.params.id;
 	var dto = req.body;
 
 	scenesRepo.update(dto).then(response => {
@@ -40,6 +39,15 @@ router.post('/light', (req, res, next) => {
 		res.send(response);
 	}, error => {
 		res.status(400).send(error);
+	});
+});
+
+router.put('/status', (req, res, next) => {
+	var sceneId = req.body.sceneId;
+	var isTurnedOn = req.body.isTurnedOn;
+
+	scenesRepo.toggleLights(sceneId, isTurnedOn).then(response => {
+		res.send(response);
 	});
 });
 

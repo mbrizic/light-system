@@ -5,9 +5,8 @@ function SceneFactory() {
 		var scene = sceneViewModel;
 
 		scene.isTurnedOn = function () {
-			//TODO: faked
-			return Math.random > 0.5;
-		}
+			return scene.lights.every(light => light.isTurnedOn());
+		};
 
 		return scene;
 	}

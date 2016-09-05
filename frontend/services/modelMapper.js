@@ -11,9 +11,9 @@ function modelMapper(Floorplan, Light, Scene) {
 		return _map(Light, lights);
 	}
 
-	function sceneMapper(lights){
-		_ensureWrappedInArray(lights);
-		return _map(Light, lights);
+	function sceneMapper(scenes){
+		_ensureWrappedInArray(scenes);
+		return _mapScene(scenes);
 	}
 
 	function _ensureWrappedInArray(entity) {
@@ -28,8 +28,21 @@ function modelMapper(Floorplan, Light, Scene) {
 		});
 	}
 
-	function _mapFloorplan(entities) {
-		return entities.map(function (floorplan) {
+	function _mapScene(scenes) {
+		return scenes.map(function (scene) {
+			scene = Scene(scene);
+
+			scene.lights = scene.lights.map(function(light) { 
+				return Light(light);
+			});
+
+			return scene;
+		});
+	}
+
+
+	function _mapFloorplan(floorplans) {
+		return floorplans.map(function (floorplan) {
 			floorplan = Floorplan(floorplan);
 
 			floorplan.lights = floorplan.lights.map(function(light) { 
