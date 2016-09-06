@@ -16,7 +16,7 @@
 		<check-box label="Toggle edit mode" model="vm.isEditMode">
 	</div>
 
-	<div class="col-xs-8">
+	<div class="col-xs-7">
 		<div ng-if="selectedFloorplan">
 			<h2>
 				{{ selectedFloorplan.name }}
@@ -51,6 +51,6 @@
 		floorplan-id="selectedFloorplan.id"
 		is-edit-mode="vm.isEditMode"
 		on-scene-toggle="onSceneToggle"
-		class="col-xs-2"> 
+		class="col-xs-3"> 
 	</scenes-list>
 </div>

@@ -9,7 +9,13 @@
 			On floorplan: <small> {{scene.floorplan.name }}</small> <br>
 		</div>
 
-		<scene-toggle scene="scene"></scene-toggle> 
+		<div ng-if="scene.hasLights()">
+			<scene-toggle scene="scene"></scene-toggle>
+		</div>
+
+		<div ng-if="!scene.hasLights()">
+			<p>Scene empty, can't toggle.</p>
+		</div>
 
 		<div ng-repeat="light in scene.lights">
 			<h4>{{light.name}}</h4>

@@ -6,12 +6,16 @@
 
 	<div ng-repeat="scene in scenes | filter: { floorplanId: floorplanId}">
 
-		<div class="col-xs-6">
+		<div class="col-xs-4">
 			{{ scene.name }}
 		</div>
 
-		<div class="col-xs-6">
+		<div ng-if="scene.hasLights()" class="col-xs-8">
 			<scene-toggle scene="scene" on-toggle="onSceneToggle"></scene-toggle>
+		</div>
+
+		<div ng-if="!scene.hasLights()" class="col-xs-8">
+			<small>Scene empty, can't toggle.</small>
 		</div>
 	</div>
 
