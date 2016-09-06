@@ -5,7 +5,8 @@ function SceneFactory() {
 		var scene = sceneViewModel;
 
 		scene.isTurnedOn = function () {
-			return scene.lights.every(light => light.isTurnedOn());
+			var hasLights = scene.lights && scene.lights.length > 0;
+			return hasLights && scene.lights.every(light => light.isTurnedOn());
 		};
 
 		return scene;

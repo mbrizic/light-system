@@ -8,12 +8,14 @@ lightSystem.directive('sceneToggle', function(){
 
 		function toggleScene(scene){
 			sceneRepository.toggleScene(scene.id, $scope.isSceneOn);
+			$scope.onToggle();
 		}
 	}
 
 	return {
 		scope: {
 			scene: '=',
+			onToggle: '=',
 		},
 		restrict: 'E',
 		controller: sceneToggleController,

@@ -19,6 +19,7 @@ lightSystem.directive('scenesList', function() {
 			scenes: '=',
 			isEditMode: '=',
 			floorplanId: '=',
+			onSceneToggle: '=',
 		},
 		restrict: 'E',
 		controller: scenesListController,

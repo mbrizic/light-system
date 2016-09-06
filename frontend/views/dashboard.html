@@ -47,9 +47,10 @@
 
 	<scenes-list 
 		ng-if="selectedFloorplan"
-		scenes="selectedFloorplan.scenes" 
+		scenes="scenes" 
 		floorplan-id="selectedFloorplan.id"
-		is-edit-mode="vm.isEditMode" 
+		is-edit-mode="vm.isEditMode"
+		on-scene-toggle="onSceneToggle"
 		class="col-xs-2"> 
 	</scenes-list>
 </div>

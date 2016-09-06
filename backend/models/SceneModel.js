@@ -26,10 +26,11 @@ module.exports = function(db, Sequelize) {
 				Scene.belongsToMany(models.Light, {
 					foreignKey: 'lightId',
 					through: models.LightScene,
+					constraints: false,
 				});
 			},
 			seed: function () {
-				//seedSceneData();
+				seedSceneData();
 			}
 		}
 	});
