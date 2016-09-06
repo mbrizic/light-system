@@ -30,7 +30,7 @@ module.exports = function(db, Sequelize) {
 				});
 			},
 			seed: function () {
-				seedSceneData();
+				//seedSceneData();
 			}
 		}
 	});

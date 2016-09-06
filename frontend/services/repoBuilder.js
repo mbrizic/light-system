@@ -26,11 +26,11 @@ function repoBuilder($http) {
 		}
 
 		function getById(id) {
-			return $http.get(baseUrl + id);
+			return $http.get(baseUrl + id).then(modelMapper);
 		}
 
 		function create(dto) {
-			return $http.post(baseUrl, dto);
+			return $http.post(baseUrl, dto).then(modelMapper);
 		}
 
 		function update(dto){

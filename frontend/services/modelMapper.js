@@ -2,23 +2,25 @@ modelMapper.$inject = ['Floorplan', 'Light', 'Scene'];
 function modelMapper(Floorplan, Light, Scene) {
 
 	function floorplanMapper(floorplans) {
-		_ensureWrappedInArray(floorplans);
+		floorplans = _ensureWrappedInArray(floorplans);
 		return _mapFloorplan(floorplans);
 	}
 
 	function lightMapper(lights){
-		_ensureWrappedInArray(lights);
+		lights = _ensureWrappedInArray(lights);
 		return _map(Light, lights);
 	}
 
 	function sceneMapper(scenes){
-		_ensureWrappedInArray(scenes);
+		scenes = _ensureWrappedInArray(scenes);
 		return _mapScene(scenes);
 	}
 
 	function _ensureWrappedInArray(entity) {
 		if(entity.constructor !== Array){
-			entity = [entity];
+			return [entity];
+		} else {
+			return entity;
 		}
 	}
 

@@ -28,6 +28,8 @@ function getAll() {
 
 function create (floorplanDto) {
 	floorplanDto.lights = [];
+	floorplanDto.scenes = [];
+
 	return Floorplan.create(floorplanDto, {
 		include: [ lightsRelation, scenesRelation ]
 	}).then(mapImageUrlPath);

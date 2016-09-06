@@ -22,7 +22,7 @@ function addEditLightPopover($scope, lightRepository, sceneRepository) {
     function createLight() {
         lightRepository.create($scope.light).then(function (response) {
             $scope.popover.isOpen = false;
-            $scope.floorplan.lights.push(response);
+            $scope.floorplan.lights.push(response[0]);
         });
     }
 

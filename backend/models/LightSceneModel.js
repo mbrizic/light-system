@@ -13,7 +13,7 @@ module.exports = function(db, Sequelize) {
 
 			},
 			seed: function () {
-				seedLightSceneData();
+				//seedLightSceneData();
 			}
 		}
 	});

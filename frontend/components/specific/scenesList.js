@@ -9,7 +9,7 @@ lightSystem.directive('scenesList', function() {
 			$scope.newScene.floorplanId = $scope.floorplanId;
 
 			sceneRepository.create($scope.newScene).then(function (response) {
-				$scope.scenes.push(response);
+				$scope.scenes.push(response[0]);
 			});
 		}
 	}

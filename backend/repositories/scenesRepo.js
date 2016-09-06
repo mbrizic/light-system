@@ -39,6 +39,7 @@ function getAll() {
 }
 
 function create (sceneDto) {
+	sceneDto.lights = [];
 	return scene.create(sceneDto, {
 		include: [ lightsRelation, scenesRelation ],
 	});

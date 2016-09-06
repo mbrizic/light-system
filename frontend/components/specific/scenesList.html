@@ -1,15 +1,19 @@
 <div>
-	<h3>scenes</h3>
+	<h3>Scenes</h3>
 	<div ng-if="!scenes.length">
 		<small> No scenes here. Toggle edit mode to add a scene.</small>
 	</div>
 
-	<ul>
-		<li ng-repeat="scene in scenes | filter: { floorplanId: floorplanId}">
+	<div ng-repeat="scene in scenes | filter: { floorplanId: floorplanId}">
+
+		<div class="col-xs-6">
 			{{ scene.name }}
+		</div>
+
+		<div class="col-xs-6">
 			<scene-toggle scene="scene" on-toggle="onSceneToggle"></scene-toggle>
-		</li>
-	</ul>
+		</div>
+	</div>
 
 	<div href ng-if="isEditMode">
 		Add new scene:

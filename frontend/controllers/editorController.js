@@ -43,9 +43,10 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
 
     function createFloorplan() {
         floorplanRepository.create($scope.floorplan).then(function (response) {
-            floorplanId = response.id;
+            $scope.floorplan = response[0];
+
+            floorplanId = $scope.floorplan.id;
             $scope.isLightPositionPhase = true;
-            $scope.floorplan = response;
         });
     }
 
@@ -63,7 +64,7 @@ function editorController($scope, floorplanRepository, lightRepository, $routePa
 
     function getFloorplan() {
         floorplanRepository.getById(floorplanId).then(function (response) {
-            $scope.floorplan = response;
+            $scope.floorplan = response[0];
         });
     }
 
