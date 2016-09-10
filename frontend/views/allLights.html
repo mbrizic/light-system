@@ -1,16 +1,22 @@
-<div ng-repeat="light in lights" ng-class="light.isTurnedOn() ? 'status-on' : 'status-off'">
-	<div class="row">
-		<h2> {{light.name}} </h2>
-
-		<div class="col-xs-4">
-			<light-toggle light="light">
-			</light-toggle>
-		</div>
-
-		<div class="col-xs-8">
-			Description: <small> {{light.floorplan.description }}</small> <br>
-			On floorplan: <small> {{light.floorplan.name }}</small>
-		</div>	
+<div ng-if="lights">
+	<div ng-if="!lights.length">
+		<p>Looks like you don't have any lights. Add them from the <a href="/editor">editor.</a></p>
 	</div>
-	<hr>
+
+	<div ng-if="lights.length" ng-repeat="light in lights" ng-class="light.isTurnedOn() ? 'status-on' : 'status-off'">
+		<div class="row">
+			<h2> {{light.name}} </h2>
+
+			<div class="col-xs-4">
+				<light-toggle light="light">
+				</light-toggle>
+			</div>
+
+			<div class="col-xs-8">
+				Description: <small> {{light.floorplan.description }}</small> <br>
+				On floorplan: <small> {{light.floorplan.name }}</small>
+			</div>	
+		</div>
+		<hr>
+	</div>
 </div>
