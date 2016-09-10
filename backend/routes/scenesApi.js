@@ -40,7 +40,7 @@ router.post('/light', (req, res, next) => {
 	scenesRepo.addLight(dto).then(response => {
 		res.send(response);
 	}, error => {
-		res.status(400).send(error);
+		res.status(400).send("Light is already present in that scene.");
 	});
 });
 

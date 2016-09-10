@@ -24,7 +24,7 @@ module.exports = function(db, Sequelize) {
 				});
 
 				Scene.belongsToMany(models.Light, {
-					foreignKey: 'lightId',
+					foreignKey: 'sceneId',
 					through: models.LightScene,
 					constraints: false,
 				});
