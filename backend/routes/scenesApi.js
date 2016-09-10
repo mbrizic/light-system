@@ -5,6 +5,8 @@ var scenesRepo = require('../repositories/scenesRepo');
 router.get('/', (req, res, next) => {
 	scenesRepo.getAll().then(response => {
 		res.send(response);
+	}, error => {
+		res.status(400).send(error);
 	});
 });
 
