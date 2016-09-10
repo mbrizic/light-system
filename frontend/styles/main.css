@@ -40,3 +40,7 @@ p.description {
     color: #777;
     font-style: italic;
 }
+
+p.title {
+    font-size: 200%;
+}

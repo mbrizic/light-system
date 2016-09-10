@@ -5,15 +5,19 @@
 
 	<div ng-if="lights.length" ng-repeat="light in lights" ng-class="light.isTurnedOn() ? 'status-on' : 'status-off'">
 		<div class="row">
-			<h2> {{light.name}} </h2>
-
-			<div class="col-xs-4">
+			<div class="col-xs-2 mod-margin-small">
 				<light-toggle light="light">
 				</light-toggle>
-			</div>
+			</div>	
 
+			<div class="col-xs-6">
+				<p class="title">{{light.name}}</p>
+			</div>
+			
 			<div class="col-xs-8">
-				Description: <small> {{light.floorplan.description }}</small> <br>
+				<span ng-if="light.description">
+					Description: <small> {{light.description }}</small> <br>
+				</span>
 				On floorplan: <small> {{light.floorplan.name }}</small>
 			</div>	
 		</div>
