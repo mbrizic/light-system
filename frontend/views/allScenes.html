@@ -1,31 +1,37 @@
+<p class="title">All scenes</p>
+
 <div ng-if="scenes">
 	<div ng-show="!scenes.length">
 		<p>Looks like you don't have any scenes. Add them from the <a href="/">dashboard.</a></p>
 	</div>
 
-	<div ng-repeat="scene in scenes">
+	<div ng-repeat="scene in scenes" ng-class="scene.isTurnedOn() ? 'status-on' : 'status-off'">
 		<div class="row">
-			<h2> {{scene.name}} </h2>
-
-			<div class="col-xs-4"></div>
-
-			<div class="col-xs-8">
-				Description: <small> {{scene.description }}</small> <br>
-				On floorplan: <small> {{scene.floorplan.name }}</small> <br>
+			<div ng-if="scene.hasLights()" class="col-xs-2 mod-margin-small">
+				<scene-toggle scene="scene"></scene-toggle>
 			</div>
 
-			<div ng-if="scene.hasLights()">
-				<scene-toggle scene="scene"></scene-toggle>
+			<div class="col-xs-6">
+				<p class="title"> {{scene.name}} </p>
+			</div>
+
+			<div class="col-xs-8">
+				<span ng-if="scene.description">
+					Description: <small> {{scene.description }}</small> <br>
+				</span>
+				On floorplan: <small> {{scene.floorplan.name }}</small> <br>
 			</div>
 
 			<div ng-if="!scene.hasLights()">
 				<p>Scene empty, can't toggle.</p>
 			</div>
 
-			<div ng-repeat="light in scene.lights">
-				<h4>{{light.name}}</h4>
-				<small> {{ light.isTurnedOn() ? 'ON' : 'OFF' }}</small>
-			</div>
+			<ul class="mod-margin-small">
+				<li ng-repeat="light in scene.lights">
+					<strong>{{light.name}}</strong>
+					<small> {{ light.isTurnedOn() ? 'ON' : 'OFF' }}</small>
+				</li>
+			</ul>
 		</div>
 		<hr>
 	</div>
