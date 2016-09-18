@@ -45,10 +45,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-var lightsApi = require('./backend/routes/lightsApi');
-var scenesApi = require('./backend/routes/scenesApi');
-var floorplansApi = require('./backend/routes/floorplansApi');
-var fileUploadApi = require('./backend/routes/fileUploadApi');
+var lightsApi = require('./backend/api/lightsApi');
+var scenesApi = require('./backend/api/scenesApi');
+var floorplansApi = require('./backend/api/floorplansApi');
+var fileUploadApi = require('./backend/api/fileUploadApi');
 
 var routes = require('./backend/routes/routes');
 
