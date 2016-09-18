@@ -50,7 +50,7 @@ var scenesApi = require('./backend/api/scenesApi');
 var floorplansApi = require('./backend/api/floorplansApi');
 var fileUploadApi = require('./backend/api/fileUploadApi');
 
-var routes = require('./backend/routes/routes');
+var routes = require('./backend/api/routes');
 
 app.use('/api/lights', lightsApi);
 app.use('/api/scenes', scenesApi);
