@@ -30,6 +30,8 @@ Object.keys(db).forEach(modelName => {
     }
 });
 
+sequelize.sync();
+
 //Uncomment this to reset db
 //sequelize.sync({force: true});
 
