@@ -4,28 +4,29 @@
 		<small> No scenes here. Toggle edit mode to add a scene.</small>
 	</div>
 
-	<div ng-repeat="scene in scenes | filter: { floorplanId: floorplanId}">
+	<div ng-repeat="scene in scenes | filter: { floorplanId: floorplanId}" class="row">
+
+		<div class="col-xs-8">
+			{{ scene.name }}
+			<div ng-if="!scene.hasLights()">
+				<small>Scene empty, can't toggle.</small>
+			</div>
+		</div>
 
 		<div class="col-xs-4">
-			{{ scene.name }}
+			<scene-toggle ng-if="scene.hasLights()" scene="scene" on-toggle="onSceneToggle"></scene-toggle>
 		</div>
-
-		<div ng-if="scene.hasLights()" class="col-xs-8">
-			<scene-toggle scene="scene" on-toggle="onSceneToggle"></scene-toggle>
-		</div>
-
-		<div ng-if="!scene.hasLights()" class="col-xs-8">
-			<small>Scene empty, can't toggle.</small>
-		</div>
+		<br>
 	</div>
 
-	<div href ng-if="isEditMode">
-		Add new scene:
+	<form ng-if="isEditMode" ng-submit="addScene()">
+		<hr>
+		<h4>Add new scene:</h4>
 		<text-box label="Name" model="newScene.name"></text-box>
 		<text-box label="Description" model="newScene.description"></text-box>
 
 		<button ng-click="addScene()" class="btn btn-primary btn-small">
 			Add
 		</button>
-	</div>
+	</form>
 </div>

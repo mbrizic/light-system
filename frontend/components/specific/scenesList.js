@@ -10,6 +10,7 @@ lightSystem.directive('scenesList', function() {
 
 			sceneRepository.create($scope.newScene).then(function (response) {
 				$scope.scenes.push(response[0]);
+				$scope.isEditMode = false;
 			});
 		}
 	}

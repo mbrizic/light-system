@@ -2,6 +2,7 @@ addEditLightPopover.$inject = ['$scope', 'lightRepository', 'sceneRepository'];
 function addEditLightPopover($scope, lightRepository, sceneRepository) {
 	$scope.isEditMode = !!$scope.light.id;
     $scope.selectedSceneId = null;
+    $scope.lightSceneIntensity = 0;
 
 	$scope.addLightToScene = addLightToScene;
 	$scope.saveLight = saveLight;
@@ -10,9 +11,12 @@ function addEditLightPopover($scope, lightRepository, sceneRepository) {
 		var dto = {
 			sceneId: sceneId,
 			lightId: $scope.light.id,
+            intensity: $scope.lightSceneIntensity,
 		};
 
-		sceneRepository.addLight(dto);
+		sceneRepository.addLight(dto).then(function(){
+            $scope.isAddToSceneMode = false;
+        });
 	}
 
     function saveLight() {

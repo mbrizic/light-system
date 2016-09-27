@@ -6,6 +6,10 @@ module.exports = function(db, Sequelize) {
 			primaryKey: true,
 			autoIncrement: true,
 		},
+		intensity: {
+			type: Sequelize.DOUBLE,
+			defaultValue: 0,
+		},
 	},
 	{
 		classMethods: {

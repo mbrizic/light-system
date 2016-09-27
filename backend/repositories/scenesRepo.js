@@ -3,7 +3,7 @@ var light = require('../models').Light;
 var floorplan = require('../models').Floorplan; 
 var lightScene = require('../models').LightScene;
 
-var lightsRelation = light.belongsToMany(scene, { 
+var lightsRelation = scene.belongsToMany(light, { 
 	as: 'lights',
 	through: lightScene,
 	foreignKey: 'sceneId',

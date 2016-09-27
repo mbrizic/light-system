@@ -1,6 +1,6 @@
 <div class="row" ng-if="!isLoading">
 	<div class="col-xs-2" ng-if="floorplans.length">
-		<h3>floorplans</h3>
+		<h3>Floorplans</h3>
 		<div ng-repeat="floorplan in floorplans"
 			 class="floorplan-slat"
 			 ng-class="isFloorplanSelected(floorplan) ? 'selected' : '' ">
@@ -16,33 +16,22 @@
 		<check-box label="Toggle edit mode" model="vm.isEditMode">
 	</div>
 
-	<div class="col-xs-7">
-		<div ng-if="selectedFloorplan">
-			<h2>
-				{{ selectedFloorplan.name }}
-				<small ng-if="vm.isEditMode">
-					<a href="/editor/{{selectedFloorplan.id}}">edit</a>
-				</small>
-			</h2>
-			<p class="description">{{ selectedFloorplan.description }}</p>
-			<floorplan-renderer
-				floorplan="selectedFloorplan"
-				light="light"
-				on-floorplan-click="onFloorplanClick"
-				on-marker-click="onMarkerClick"
-				on-popover-save=""
-				popover="popover">
-			</floorplan-renderer>
-		</div>
-
-		<div ng-if="!selectedFloorplan">
-			<h3>You don't have a light setup yet.</h3>
-			<h4>
-				Click
-				<a href="editor">here</a>
-				to add a floorplan.
-			</h4>
-		</div>
+	<div class="col-xs-7" ng-if="selectedFloorplan">
+		<h2>
+			{{ selectedFloorplan.name }}
+			<small ng-if="vm.isEditMode">
+				<a href="/editor/{{selectedFloorplan.id}}">edit</a>
+			</small>
+		</h2>
+		<p class="description">{{ selectedFloorplan.description }}</p>
+		<floorplan-renderer
+			floorplan="selectedFloorplan"
+			light="light"
+			on-floorplan-click="onFloorplanClick"
+			on-marker-click="onMarkerClick"
+			on-popover-save=""
+			popover="popover">
+		</floorplan-renderer>
 	</div>
 
 	<scenes-list 
@@ -53,4 +42,13 @@
 		on-scene-toggle="onSceneToggle"
 		class="col-xs-3"> 
 	</scenes-list>
+
+	<div ng-if="!selectedFloorplan" class="centered mod-padding-top-large">
+		<h3>You don't have a light setup yet.</h3>
+		<h4>
+			Click
+			<a href="editor">here</a>
+			to add a floorplan.
+		</h4>
+	</div>
 </div>
