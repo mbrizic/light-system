@@ -60,13 +60,13 @@ function addLight(lightSceneDto) {
 }
 
 function toggleLights(sceneId, isTurnedOn) {
-	var fieldsToUpdate = { intensity: isTurnedOn ? 1 : 0 };
-
 	return scene.find({
  		where: { id: sceneId }, 
   		include: [ lightsRelation ],
 	}).then (scene => {
-		return scene.lights.map(light => light.updateAttributes(fieldsToUpdate));
+		return scene.lights.map(light => light.updateAttributes({
+			intensity: isTurnedOn ? light.LightScene.intensity : 0
+		}));
 	});
 }
 

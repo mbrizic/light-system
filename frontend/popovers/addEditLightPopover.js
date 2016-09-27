@@ -11,7 +11,7 @@ function addEditLightPopover($scope, lightRepository, sceneRepository) {
 		var dto = {
 			sceneId: sceneId,
 			lightId: $scope.light.id,
-            intensity: $scope.lightSceneIntensity,
+            intensity: +$scope.lightSceneIntensity,
 		};
 
 		sceneRepository.addLight(dto).then(function(){

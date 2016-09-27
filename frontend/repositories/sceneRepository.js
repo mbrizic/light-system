@@ -7,7 +7,7 @@ function sceneRepository($http, modelMapper, repoBuilder) {
 	});
 
 	function addLight(light) {
-		$http.post('api/scenes/light', light).then(function (response) {
+		return $http.post('api/scenes/light', light).then(function (response) {
 			console.log(response);
 		});
 	}

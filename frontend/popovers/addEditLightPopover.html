@@ -12,8 +12,15 @@
 		<h4>Add light to scene:</h4>
 		<select-dropdown model="selectedSceneId" url="api/scenes"></select-dropdown>
 
-		Scene light intensity: {{lightSceneIntensity}}
-		<input type="range" ng-model="lightSceneIntensity" min="0" max="100">
+		<div ng-show="!light.isDiscrete">
+			Scene light intensity: {{lightSceneIntensity}}
+			<input type="range" ng-model="lightSceneIntensity" min="0" max="100">
+		</div>
+
+		<div ng-show="light.isDiscrete">
+			Scene light value: 
+			<toggle ng-model="lightSceneIntensity" style="quick"></toggle>
+		</div>
 		
 		<button ng-click="isAddToSceneMode = false">
 			&lt; Back
