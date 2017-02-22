@@ -1,3 +1,7 @@
 .mod-margin-small {
     margin: 5px;
 }
+
+.mod-padding-top-large {
+	padding-top: 50px;
+}

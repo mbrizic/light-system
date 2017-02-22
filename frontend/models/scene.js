@@ -9,7 +9,7 @@ function SceneFactory() {
 		}
 
 		scene.isTurnedOn = function () {
-			return scene.hasLights() && scene.lights.every(light => light.isTurnedOn());
+			return scene.hasLights() && scene.lights.every(light => light.intensity == light.LightScene.intensity);
 		};
 
 		return scene;

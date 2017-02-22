@@ -3,16 +3,41 @@
 	<text-area model="light.description" label="Description"></text-area>
 	<check-box model="light.isDiscrete" label="Discrete"></check-box>
 
-	<div ng-if="isEditMode">
-		Add light to scene:
-		<select-dropdown model="selectedSceneId" url="api/scenes"></select-dropdown>
-		<button ng-click="addLightToScene(selectedSceneId)">Add</button>
+	<div ng-click="isAddToSceneMode = true" ng-show="!isAddToSceneMode">
+		<a href>Add light to scene</a>
 	</div>
 
-	<button ng-click="saveLight()">
-		<span ng-if="!isEditMode"> Create </span>
-		<span ng-if="isEditMode">  Update </span>
-	</button>
+	<div ng-show="isEditMode && isAddToSceneMode">
+		<hr>
+		<h4>Add light to scene:</h4>
+		<select-dropdown model="selectedSceneId" url="api/scenes"></select-dropdown>
 
-	<button ng-click="popover.isOpen = false">Cancel</button>
+		<div ng-show="!light.isDiscrete">
+			Scene light intensity: {{lightSceneIntensity}}
+			<input type="range" ng-model="lightSceneIntensity" min="0" max="100">
+		</div>
+
+		<div ng-show="light.isDiscrete">
+			Scene light value: 
+			<toggle ng-model="lightSceneIntensity" style="quick"></toggle>
+		</div>
+		
+		<button ng-click="isAddToSceneMode = false">
+			&lt; Back
+		</button>
+		
+		<button ng-click="addLightToScene(selectedSceneId)"
+				ng-disabled="!selectedSceneId">
+			Add to scene
+		</button>
+	</div>
+
+	<div ng-show="!isAddToSceneMode">
+		<button ng-click="saveLight()">
+			<span ng-if="!isEditMode"> Create </span>
+			<span ng-if="isEditMode">  Update </span>
+		</button>
+
+		<button ng-click="popover.isOpen = false">Cancel</button>
+	</div>
 </div>

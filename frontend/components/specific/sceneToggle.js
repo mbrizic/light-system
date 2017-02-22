@@ -9,7 +9,7 @@ lightSystem.directive('sceneToggle', function(){
 		function toggleScene(scene){
 			sceneRepository.toggleScene(scene.id, $scope.isSceneOn);
 			scene.lights.forEach(function (light) {
-				light.intensity = $scope.isSceneOn ? 1 : 0;
+				light.intensity = light.LightScene.intensity;
 			});
 
 			if($scope.onToggle){

@@ -1,8 +1,11 @@
-<h1>editor</h1>
+<h1>Add new floorplan</h1>
 
-<upload-form ng-if="!isEditMode" on-submit="uploadImage"> </upload-form>
+<div ng-if="!isEditMode">
+	<h4>First, you'll need to upload an floorplan image.</h4>
+	<upload-form on-submit="uploadImage"> </upload-form>
+</div>
 
-<form ng-if="isEditMode" ng-submit="saveFloorplan()" ng-class="isLightPositionPhase ? 'col-xs-3' : 'col-xs-12'">
+<form ng-if="isEditMode" ng-submit="saveFloorplan()" ng-class="isLightPositionPhase ? 'col-xs-3' : 'col-xs-6 centered'">
 	<text-box model="floorplan.name" label="Name"> </text-box>
 
 	<text-area model="floorplan.description" label="Description"> </text-area>
@@ -14,7 +17,7 @@
 </form>
 
 <div ng-if="isEditMode && isLightPositionPhase">
-	<p>click on floorplan to add lights</p>
+	<h4>Click on floorplan to add lights</h4>
 
 	<floorplan-renderer
 		floorplan="floorplan"
